@@ -90,14 +90,40 @@ This component automatically injects the following manifests upon compilation:
 
 ---
 
-## 💿 Installation Guide
+## 💿 Installation Guide & Architecture
 
-1. Head over to the [Releases]() section of this repository and download the latest `com.luckyh9h.streamradio.aix` file.
-2. Open your **Niotron** or **MIT App Inventor** creator platform.
-3. In the Palette column, scroll down to the bottom and click on **Extension** -> **Import extension**.
-4. Drag and drop the downloaded `.aix` component into your application project layout.
+### 🛠️ Step-by-Step Installation
+1. Go to the right sidebar of this repository, click on **[Releases]()**, and download the latest version of `com.luckyh9h.streamradio.aix`.
+2. Open your development interface (**Niotron Studio** or **MIT App Inventor**).
+3. Navigate to the **Palette** pane on the left, scroll down to the bottom, and expand the **Extension** section.
+4. Click on **Import extension**, choose the downloaded `.aix` file, and click import.
+5. Drag and drop the `BgRadio` component into your Viewer workspace. It will appear at the bottom as a *Non-visible component*.
 
----
+### 🏗️ Underlying Architecture Flow
+To deliver an ultra-responsive experience, the extension implements a high-efficiency dual-path routing system. Standard media endpoints completely bypass thread locks, while unverified playlists enter an asynchronous resolver loop:
+
+```mermaid
+graph TD
+    A[App / External App calls BroadcastPlay] --> B{Is URL a Playlist?}
+    
+    %% Fast Path %%
+    B -- No .mp3/.aac/stream/live --> C[⚡ FAST PASS]
+    C --> D[Directly invokes startNativeMediaPlayer]
+    D --> E[Android Hardware Media Decoder handles playback]
+    
+    %% Resolver Path %%
+    B -- Yes .m3u/.pls/.asx/unknown --> F[🔍 ASYNC RESOLVER ENGINE]
+    F --> G[Worker Thread initiates light HEAD Probe]
+    G --> H{HTTP Status?}
+    H -- 301/302/307 Redirect --> I[Manual Redirect Tracking & Session Cookie Saved]
+    I --> G
+    H -- 200 Content Check --> J{Is Playlist Content?}
+    J -- Yes --> K[Parse .m3u/.pls lines to extract raw URL]
+    K --> G
+    J -- No --> L[Terminate probe safely & handover URL]
+    L --> D
+```
+
 
 ## 🗺️ Best Practice Blocks Implementation
 
