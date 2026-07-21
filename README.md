@@ -84,11 +84,11 @@ This component automatically injects the following manifests upon compilation:
 
 ### 📡 Events
 * 🔸 **`OnStatusChanged(String status)`**  
-  Fires dynamically when state updates occur (`Playing`, `Buffering`, `Stopped`, `Timeout Reconnecting`, `Connect Error: ...`).
+  Fires dynamically when state updates occur (`Playing`, `Buffering`, `Stopped`, `Timeout Reconnecting`, `Connect Error: ...`).  
   <img width="312" height="86" alt="statuschg" src="https://github.com/user-attachments/assets/8a6c9043-8715-4424-b466-4a880e935abe" />
 
 * 🔸 **`OnRadioListReceived(String jsonList)`**  
-  Triggered when directory search finishes. Filters out dead streams and low-bitrate artifacts, returning a clean JSON array string.
+  Triggered when directory search finishes. Filters out dead streams and low-bitrate artifacts, returning a clean JSON array string.  
   <img width="333" height="86" alt="list" src="https://github.com/user-attachments/assets/b2978dd3-fadb-4914-84ab-08da3e641223" />
 
 * 🔸 **`OnDebugLog(String logMessage)`**  
