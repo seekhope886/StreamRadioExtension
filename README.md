@@ -76,6 +76,8 @@ This component automatically injects the following manifests upon compilation:
 * 🔹 **`SetNotificationPayload(String topic, String message)`**  
   Injects custom string payload targets into the Android Notification card. Supports multi-line data.
 
+🔹 StoreValue(String tag, Object valueToStore)Stores any type of variable (Text, Numbers, Boolean) persistently under a specific key (Tag) inside an isolated external SharedPreferences database.🔹 GetValue(String tag, Object valueIfTagNotThere)Retrieves the value associated with the specified tag. It automatically infers the data type based on your provided default value fallback parameter.
+
 ### 📡 Events
 * 🔸 **`OnStatusChanged(String status)`**  
   Fires dynamically when state updates occur (`Playing`, `Buffering`, `Stopped`, `Timeout Reconnecting`, `Connect Error: ...`).
