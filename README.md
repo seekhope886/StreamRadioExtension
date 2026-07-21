@@ -94,7 +94,8 @@ This component automatically injects the following manifests upon compilation:
 * 🔸 **`OnDebugLog(String logMessage)`**  
   Passes inner-resolver HTTP headers, connection trace states, and tracking routes for testing and debugging.
   
-🔹 GetRadioSessionId()Returns the unique native Android AudioSessionID (integer) assigned to the active hardware decoder instance. Returns 0 if idle. Essential for developers who wish to interface with external Audio Effect Extensions, Equalizers, or real-time Visualizer spectrum animations.
+* 🔸 **`GetRadioSessionId()`**
+  Returns the unique native Android AudioSessionID (integer) assigned to the active hardware decoder instance. Returns 0 if idle. Essential for developers who wish to interface with external Audio Effect Extensions, Equalizers, or real-time Visualizer spectrum animations.
 ---
 
 ## 💿 Installation Guide & Architecture
