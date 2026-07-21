@@ -1,5 +1,6 @@
 
-# BgRadio: Background Foreground Streaming Radio Service 📻
+# BgRadio: Background Foreground Streaming Radio Service 📻<img width="77" height="68" alt="streamradio" src="https://github.com/user-attachments/assets/1b874163-9c90-4648-a767-9997291cf20d" />
+
 
 [![MIT License](https://shields.io)](https://opensource.org)
 [![Platform](https://shields.io)]()
